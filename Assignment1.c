@@ -67,6 +67,18 @@ int main(int argc, char *argv[]) {
 
     printf("Using %d threads for parallel execution.\n", num_threads);
 
+    double start = omp_get_wtime();
+
+    parallel_count_and_separate(arr, N, evens, odds, &even_count, &odd_count, num_threads);
+
+    double end = omp_get_wtime();
+    double time_taken = (end - start) * 1000;  // Convert to milliseconds
+
+    printf("Parallel Execution Time: %.2f ms\n", time_taken);
+    printf("Even Numbers: %d, Odd Numbers: %d\n", even_count, odd_count);
+
+    free(evens);
+    free(odds);
     return 0;
 }
 
