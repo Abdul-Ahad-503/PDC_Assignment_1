@@ -55,6 +55,18 @@ int main(int argc, char *argv[]) {
         arr[i] = rand() % 10000;  // Random numbers between 0-9999
     }
 
-    printf("Random array of size %d generated successfully.\n", N);
+    int *evens = (int *)malloc(N * sizeof(int));
+    int *odds = (int *)malloc(N * sizeof(int));
+    int even_count = 0, odd_count = 0;
+
+    // Default to maximum threads if not provided
+    int num_threads = omp_get_max_threads();
+    if (argc > 1) {
+        num_threads = atoi(argv[1]); // Get user-specified thread count
+    }
+
+    printf("Using %d threads for parallel execution.\n", num_threads);
+
     return 0;
 }
+
