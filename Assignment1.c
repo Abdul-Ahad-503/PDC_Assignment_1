@@ -3,7 +3,7 @@
 #include <time.h>
 #include <omp.h>
 
-#define N 1000  // Minimum size of the array
+#define N 100000  // Minimum size of the array
 
 void parallel_count_and_separate(int *arr, int size, int *evens, int *odds, int *even_count, int *odd_count, int num_threads) {
     int local_even_count = 0, local_odd_count = 0;
